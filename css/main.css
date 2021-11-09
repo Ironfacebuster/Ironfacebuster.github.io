@@ -22,7 +22,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     background-color: rgb(5, 5, 40);
-    padding-bottom: 200px;
+    /* margin-bottom: 500px; */
     user-select: none;
 }
 
@@ -166,7 +166,6 @@ scrollbox {
     float: top;
     max-width: 600px;
     display: block;
-    margin-bottom: 25px;
     transform: translateX(160%);
     transition: transform cubic-bezier(0.175, 0.885, 0.32, 1.275) var(--long-transition), filter var(--fast-transition);
 }
@@ -211,4 +210,18 @@ column[downsize=true] {
 .arrow[hidden=true] {
     filter: opacity(0%);
     transition: filter var(--fast-transition);
+}
+
+#footer {
+    text-align: center;
+    font-family: 'mohavelight';
+    font-size: normal;
+    font-weight: bold;
+    color: white;
+    display: block;
+    margin-top: 500px;
+    /* position: absolute; */
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
