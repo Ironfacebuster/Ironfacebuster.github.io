@@ -172,7 +172,7 @@ scrollbox {
 
 scrollbox[hidden=true] {
     top: 0;
-    transform: translateX(160%) translateY(-105%);
+    transform: translateX(160%) translateY(-25%);
     filter: opacity(0%);
     transition: transform var(--default-transition), filter var(--fast-transition);
 }
