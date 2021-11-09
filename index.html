@@ -166,6 +166,10 @@
                         Card
                         Game</a>; it's Uno.
                 </li>
+                <li>
+                    <a href="https://app.posted.network/">Posted</a>; a small social media site with an intended focus
+                    on discussion, rather than likes or subscribers.
+                </li>
             </ul>
         </bigblock>
     </scrollbox>
@@ -187,7 +191,23 @@
             <blocktitle>"william hustle ton"</blocktitle>
             <blocksub>A Green Blob</blocksub>
         </bigblock>
+        <bigblock>
+            <blocktitle>"pretty cool"</blocktitle>
+            <blocksub>College Student</blocksub>
+        </bigblock>
+        <bigblock>
+            <blocktitle>"Pog"</blocktitle>
+            <blocksub>Another College Student</blocksub>
+        </bigblock>
+        <bigblock>
+            <blocktitle>"When are you going to college?"</blocktitle>
+            <blocksub>My Dad</blocksub>
+        </bigblock>
     </scrollbox>
+
+    <div id="footer">
+        © William Huddleston 2021
+    </div>
 
     <script>
         let is_open = false;
@@ -224,7 +244,11 @@
             active_scrollbox.setAttribute("hidden", !is_open)
         }
 
+        let footer = document.getElementById("footer")
+
         setInterval(() => {
+            // footer.style.bottom = window.scrollY + "px"
+
             if (active_scrollbox != null) {
                 active_scrollbox.style.display = "block"
                 active_scrollbox.setAttribute("hidden", !is_open)
@@ -249,7 +273,7 @@
             active_arrow.setAttribute("hidden", !is_open)
 
             if (is_open) {
-                let top = (active_bigblock.getBoundingClientRect().top / 1.25) + window.scrollY - 20
+                let top = (active_bigblock.getBoundingClientRect().top / 1.75) + window.scrollY - 20
                 active_scrollbox.style.top = top + "px"
             }
         })
