@@ -170,7 +170,11 @@
         </bigblock>
     </scrollbox>
 
+    <img src="./img/arrow_left.webp" id="scrollbox_arrow" class="arrow">
+
+
     <scrollbox id="peer_reviews" hidden=true>
+
         <bigblock>
             <blocktitle>"haha doxxed"</blocktitle>
             <blocksub>A Guy</blocksub>
@@ -192,6 +196,8 @@
         let active_bigblock = document.getElementById("about_block")
         let main_col = document.getElementsByTagName("column")[0]
         let last_toggle = null
+        let active_arrow = document.getElementById("scrollbox_arrow")
+        let arrow_x = "35.8%"
 
         function ActivateScrollBox(id, parent, toggle) {
             if (active_scrollbox != null && active_scrollbox.id != id && is_open) {
@@ -222,15 +228,30 @@
             if (active_scrollbox != null) {
                 active_scrollbox.style.display = "block"
                 active_scrollbox.setAttribute("hidden", !is_open)
+
+                if (last_toggle != null) {
+                    let top = active_scrollbox.getBoundingClientRect().top + window.scrollY,
+                        bot = active_scrollbox.getBoundingClientRect().bottom + window.scrollY
+
+                    let offset = last_toggle.getBoundingClientRect().top + window.scrollY
+                    offset = Math.max(top, Math.min(offset, bot))
+                    active_arrow.style.top = `${offset}px`
+
+                    let right = active_scrollbox.getBoundingClientRect().x
+                    active_arrow.style.right = (right) + "px"
+                    // active_arrow.style.right = arrow_x;
+                }
             }
 
             main_col.setAttribute("downsize", is_open)
 
+            // if(active_arrow )
+            active_arrow.setAttribute("hidden", !is_open)
+
             if (is_open) {
                 let top = (active_bigblock.getBoundingClientRect().top / 1.25) + window.scrollY - 20
                 active_scrollbox.style.top = top + "px"
-            } else {}
-
+            }
         })
     </script>
 </body>

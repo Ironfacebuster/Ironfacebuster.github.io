@@ -6,9 +6,13 @@
 
 body {
     /* colors */
-    --color-primary: rgb(50, 40, 255);
-    --color-center: rgb(34, 30, 255);
-    --color-secondary: rgb(70, 7, 173);
+    /* --color-primary: rgb(50, 40, 255); */
+    /* --color-center: rgb(34, 30, 255); */
+    /* --color-secondary: rgb(70, 7, 173); */
+    --color-primary: #312e7b;
+    --color-center: #2a2978;
+    --color-secondary: #2d1752;
+    --color-border: #2a2978;
     /* animation values */
     --fast-transition: 0.2s;
     --default-transition: 0.3s;
@@ -37,12 +41,7 @@ bigblock {
     border-radius: 10px;
     /* font */
     font-family: 'Titillium Web';
-    /* desaturation filters & background */
-    -webkit-filter: grayscale(0.65);
-    -webkit-filter: grayscale(65%);
-    -moz-filter: grayscale(65%);
-    filter: gray;
-    filter: grayscale(65%) drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.5));
+    /* background */
     background-image: linear-gradient(var(--color-primary), var(--color-center), var(--color-center), var(--color-secondary));
     transform: scale(1);
     transition: transform cubic-bezier(0.175, 0.885, 0.32, 1.275) var(--default-transition);
@@ -98,14 +97,27 @@ bigblock bigblock {
     background-color: var(--color-center);
     border-color: var(--color-primary);
     background-image: none;
+    -webkit-filter: grayscale(0.65);
+    -webkit-filter: grayscale(65%);
+    -moz-filter: grayscale(65%);
+    filter: gray;
+    filter: grayscale(65%) drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.5));
 }
 
 scrollbox bigblock {
     max-width: 400px;
     margin-bottom: 10px;
-    background-color: rgba(45, 40, 55);
+    /* background-color: rgba(45, 40, 55);
     border-color: rgb(50, 50, 50);
+    background-image: none; */
+    background-color: var(--color-center);
+    border-color: var(--color-primary);
     background-image: none;
+    -webkit-filter: grayscale(0.65);
+    -webkit-filter: grayscale(65%);
+    -moz-filter: grayscale(65%);
+    filter: gray;
+    filter: grayscale(65%) drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.5));
 }
 
 bigblock a {
@@ -141,13 +153,21 @@ blocksub {
 }
 
 scrollbox {
+    /* padding and margin */
+    padding: 5px 25px 15px 25px;
+    /* border */
+    border: 2px solid var(--color-center);
+    border-radius: 10px;
+    /* background */
+    background-color: var(--color-primary);
+    background-image: none;
+    /* other */
     position: absolute;
     float: top;
     max-width: 600px;
     display: block;
     margin-bottom: 25px;
     transform: translateX(160%);
-    filter: opacity(100%);
     transition: transform cubic-bezier(0.175, 0.885, 0.32, 1.275) var(--long-transition), filter var(--fast-transition);
 }
 
@@ -174,4 +194,21 @@ column {
 column[downsize=true] {
     margin-left: 0px;
     transition: margin-left var(--default-transition);
+}
+
+.arrow {
+    display: block;
+    height: 32px;
+    width: auto;
+    position: absolute;
+    /* left: 0; */
+    z-index: 11;
+    transform: translateX(2615%);
+    filter: opacity(100%);
+    transition: filter var(--fast-transition);
+}
+
+.arrow[hidden=true] {
+    filter: opacity(0%);
+    transition: filter var(--fast-transition);
 }
