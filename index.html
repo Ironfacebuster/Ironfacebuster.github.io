@@ -240,6 +240,7 @@
             last_toggle = toggle
 
             active_scrollbox.style.zIndex = is_open ? 10 : -1
+            active_arrow.style.zIndex = is_open ? 11 : -1
 
             active_scrollbox.setAttribute("hidden", !is_open)
         }

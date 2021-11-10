@@ -166,13 +166,13 @@ scrollbox {
     float: top;
     max-width: 600px;
     display: block;
-    transform: translateX(160%);
+    transform: translateX(140%);
     transition: transform cubic-bezier(0.175, 0.885, 0.32, 1.275) var(--long-transition), filter var(--fast-transition);
 }
 
 scrollbox[hidden=true] {
     top: 0;
-    transform: translateX(160%) translateY(-25%);
+    transform: translateX(140%) translateY(-25%);
     filter: opacity(0%);
     transition: transform var(--default-transition), filter var(--fast-transition);
 }
@@ -202,7 +202,7 @@ column[downsize=true] {
     position: absolute;
     /* left: 0; */
     z-index: 11;
-    transform: translateX(2615%);
+    transform: translateX(1375%);
     filter: opacity(100%);
     transition: filter var(--fast-transition);
 }
