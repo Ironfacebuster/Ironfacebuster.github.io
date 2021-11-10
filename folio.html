@@ -13,6 +13,10 @@
         content="I wouldn't call myself the world's best photographer, but I do think I can snap some beautiful pictures.">
 
     <meta property="theme-color" content="#e0ffea">
+    <meta property="theme-color" content="#e0ffea" media="(prefers-color-scheme: light)">
+    <!-- force the theme color even if in dark mode? -->
+    <meta property="theme-color" content="#e0ffea" media="(prefers-color-scheme: dark)">
+
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -88,7 +92,6 @@
             user-select: none;
             background-color: var(--primary);
             color: var(--tertiary);
-            /* margin-bottom: 5em; */
         }
 
         divider h2 {
@@ -99,7 +102,33 @@
             display: block;
             max-width: 40em;
             width: 100%;
-            margin-bottom: 1.5em;
+            margin-bottom: 0.25em;
+
+            overflow-y: hidden;
+
+            max-height: 20px;
+
+            transition: height 1s ease-out;
+        }
+
+        divider content[active=true] {
+            max-height: fit-content;
+            transition: height 1s ease-in;
+        }
+
+        drop {
+            max-width: 40em;
+            text-align: center;
+            height: 15px;
+            position: relative;
+            cursor: pointer;
+            display: block;
+            margin-top: 5px;
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bolder;
+
+            font-size: auto;
         }
 
         date {
@@ -257,7 +286,7 @@
     <div style="height: 57.33px;"></div>
     <divider>
         <!-- <h2>Preamble</h2> -->
-        <content>
+        <content active=true>
             I wouldn't call myself the world's best photographer, but I do think I can snap some beautiful pictures.
             As someone just getting into a craft, my tools are somewhat limited. My main shooter is a 2000-something
             Canon Rebel XT; a hand-me-down from my mom! I recently picked up a slightly older Canon Rebel X, a 35mm film
@@ -280,6 +309,7 @@
             back, and I want to be alone again.<br><br><br>
             "Sure, I'll take a picture of you," I said.
         </content>
+        <drop active=false onclick="showContent(this.parentNode)">more</drop>
     </divider>
     <year>
         <month>Fall</month>
@@ -335,6 +365,7 @@
             looking in with soft eyes. Unfortunately this brings with it its own set of problems. The despair of being
             alone.
         </content>
+        <drop active=false onclick="showContent(this.parentNode)">more</drop>
     </divider>
     <year>
         <month>Winter</month>
@@ -359,6 +390,7 @@
             house. I had made some new friends, who I'd hoped would stay around for longer.<br><br>
             It was rough, for me, and my parents. But I like to think it worked out in the end.
         </content>
+        <drop active=false onclick="showContent(this.parentNode)">more</drop>
     </divider>
     <year>
         <month>Spring</month>
@@ -395,6 +427,32 @@
             if (this.event.target != el) return
             this.event.stopPropagation()
             overlay.style.display = "none"
+        }
+
+        function showContent(parent) {
+            let drop
+            let content
+
+            for (var i = 0; i < parent.childNodes.length; ++i) {
+                let child = parent.childNodes[i]
+                if (child.tagName == "DROP")
+                    drop = child
+                if (child.tagName == "CONTENT")
+                    content = child
+            }
+
+            if (content != null && drop != null) {
+                let active = drop.getAttribute("active")
+                if (active == "false") {
+                    drop.innerText = "less"
+                    drop.setAttribute("active", true)
+                    content.setAttribute("active", true)
+                } else {
+                    drop.innerText = "more"
+                    drop.setAttribute("active", false)
+                    content.setAttribute("active", false)
+                }
+            }
         }
 
         recalcSize()
