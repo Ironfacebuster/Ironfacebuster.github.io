@@ -385,7 +385,7 @@
         }
 
         function closeModal(el) {
-            if (this.event.path[0] != el) return
+            if (this.event.target != el) return
             this.event.stopPropagation()
             overlay.style.display = "none"
         }
