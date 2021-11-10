@@ -177,7 +177,7 @@
     <img src="./img/arrow_left.webp" id="scrollbox_arrow" class="arrow">
 
 
-    <scrollbox id="peer_reviews" hidden=true>
+    <scrollbox id="peer_reviews" hidden=true style="z-index: -1;">
 
         <bigblock>
             <blocktitle>"haha doxxed"</blocktitle>
@@ -255,8 +255,10 @@
                 active_scrollbox.setAttribute("hidden", !is_open)
 
                 if (last_toggle != null) {
-                    let top = active_scrollbox.getBoundingClientRect().top + window.scrollY,
-                        bot = active_scrollbox.getBoundingClientRect().bottom + window.scrollY
+                    let padding = 15
+                    let top = active_scrollbox.getBoundingClientRect().top + window.scrollY + padding,
+                        bot = active_scrollbox.getBoundingClientRect().bottom + window.scrollY -
+                        getComputedStyle(active_arrow).height.replace("px", "") - padding
 
                     let offset = last_toggle.getBoundingClientRect().top + window.scrollY
                     offset = Math.max(top, Math.min(offset, bot))
@@ -274,7 +276,17 @@
             active_arrow.setAttribute("hidden", !is_open)
 
             if (is_open) {
-                let top = (active_bigblock.getBoundingClientRect().top / 1.75) + window.scrollY - 20
+                let height = (active_bigblock.getBoundingClientRect().bottom - active_bigblock
+                    .getBoundingClientRect().top)
+
+                let top = (active_bigblock.getBoundingClientRect().top / 1.75) + window.scrollY
+                // clamp top to above the footer
+                let bot = top + height
+                bot = Math.min(bot, (footer.getBoundingClientRect().top + window.scrollY) - (height * 3.5))
+                // console.log(height, bot, footer.getBoundingClientRect().top + window.scrollY)
+                top = bot - height
+
+                // console.log(bot)
                 active_scrollbox.style.top = top + "px"
             }
         })
