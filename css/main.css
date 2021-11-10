@@ -186,7 +186,7 @@ flexbox {
 
 column {
     display: block;
-    margin-left: 300px;
+    margin-left: 266px;
     transition: margin-left var(--default-transition);
 }
 
