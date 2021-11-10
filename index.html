@@ -11,11 +11,30 @@
     <link rel="stylesheet" href="css/social.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- meta tags -->
-    <meta name="og:title" content="William Huddleston">
-    <meta name="og:image" content="https://avatars.githubusercontent.com/u/38227932">
-    <meta name="og:description" content="I am an independent software developer.">
-    <meta name="theme-color" content="#2a2978">
+
+    <!-- Primary Meta Tags -->
+    <title>William Huddleston - Software Developer</title>
+    <meta name="title" content="William Huddleston - Software Developer">
+    <meta name="description"
+        content="I'm a self-taught, independent software developer. Ironfacebuster is my name, open source is my game.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ironfacebuster.tk/">
+    <meta property="og:title" content="William Huddleston - Software Developer">
+    <meta property="og:description"
+        content="I'm a self-taught, independent software developer. Ironfacebuster is my name, open source is my game.">
+    <!-- TODO: GET A BETTER PICTURE FOR THE META TAGS!!!! -->
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/38227932">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.ironfacebuster.tk/">
+    <meta property="twitter:title" content="William Huddleston - Software Developer">
+    <meta property="twitter:description"
+        content="I'm a self-taught, independent software developer. Ironfacebuster is my name, open source is my game.">
+    <!-- TODO: GET A BETTER PICTURE FOR THE META TAGS!!!! -->
+    <meta property="twitter:image" content="https://avatars.githubusercontent.com/u/38227932">
 </head>
 
 <body>
@@ -264,7 +283,7 @@
                     let padding = 15
                     let top = active_scrollbox.getBoundingClientRect().top + window.scrollY + padding,
                         bot = active_scrollbox.getBoundingClientRect().bottom + window.scrollY -
-                        getComputedStyle(active_arrow).height.replace("px", "") - padding
+                            getComputedStyle(active_arrow).height.replace("px", "") - padding
 
                     let offset = last_toggle.getBoundingClientRect().top + window.scrollY
                     offset = Math.max(top, Math.min(offset, bot))
