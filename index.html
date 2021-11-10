@@ -206,8 +206,8 @@
             <blocksub>Another College Student</blocksub>
         </bigblock>
         <bigblock>
-            <blocktitle>"When are you going to college?"</blocktitle>
-            <blocksub>My Dad</blocksub>
+            <blocktitle>"He makes good computer stuff"</blocktitle>
+            <blocksub>Highschool Dropout</blocksub>
         </bigblock>
     </scrollbox>
 
@@ -288,7 +288,7 @@
                 let top = (active_bigblock.getBoundingClientRect().top / 1.75) + window.scrollY
                 // clamp top to above the footer
                 let bot = top + height
-                top = Math.min(bot, (footer.getBoundingClientRect().top + window.scrollY) - (height * 3.5)) -
+                top = Math.min(bot, (footer.getBoundingClientRect().top + window.scrollY) - (height * 4)) -
                     height
 
                 // console.log(bot)
