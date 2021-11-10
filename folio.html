@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Putting Yourself Out There - William Huddleston</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="fonts/fonts.css">
@@ -201,8 +200,8 @@
         camera img {
             text-align: center;
             display: block;
-            height: 50em;
-            max-height: 1000px;
+
+            height: auto;
             width: auto;
 
             border-radius: 0;
@@ -373,15 +372,8 @@
             let max_width = Math.min(window.innerWidth - 100, 900)
             let max_height = Math.min(window.innerHeight - 100, 1000)
 
-            if (max_width < max_height) {
-                viewer.style.maxWidth = max_width + "px"
-                viewer.style.removeProperty("max-height")
-                viewer.style.height = "auto"
-            } else {
-                viewer.style.maxHeight = max_height + "px"
-                viewer.style.removeProperty("max-width")
-                viewer.style.width = "auto"
-            }
+            viewer.style.maxWidth = max_width + "px"
+            viewer.style.maxHeight = max_height + "px"
         }
 
         function openModal(img) {
