@@ -36,7 +36,7 @@
         <bigblock id="about_block"
             onclick="ActivateScrollBox('about_scrollbox','about_block', document.getElementById('about_dropdown'))">
             <blocktitle>About Me</blocktitle>
-            I am an independant software developer. I love to open source my projects, if I feel like they'll help
+            I am an independent software developer. I love to open source my projects, if I feel like they'll help
             someone else. I have multiple years experience in various programming languages, and I'm always looking to
             learn more.
 
@@ -282,9 +282,8 @@
                 let top = (active_bigblock.getBoundingClientRect().top / 1.75) + window.scrollY
                 // clamp top to above the footer
                 let bot = top + height
-                bot = Math.min(bot, (footer.getBoundingClientRect().top + window.scrollY) - (height * 3.5))
-                // console.log(height, bot, footer.getBoundingClientRect().top + window.scrollY)
-                top = bot - height
+                top = Math.min(bot, (footer.getBoundingClientRect().top + window.scrollY) - (height * 3.5)) -
+                    height
 
                 // console.log(bot)
                 active_scrollbox.style.top = top + "px"
