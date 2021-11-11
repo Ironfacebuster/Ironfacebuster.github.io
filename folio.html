@@ -311,7 +311,7 @@
             back, and I want to be alone again.<br><br><br>
             "Sure, I'll take a picture of you," I said.
         </content>
-        <drop active=false onclick="showContent(this.parentNode)">more</drop>
+        <drop active=false onclick="showContent(this.parentNode)">show more</drop>
     </divider>
     <year>
         <month>Fall</month>
@@ -367,7 +367,7 @@
             looking in with soft eyes. Unfortunately this brings with it its own set of problems. The despair of being
             alone.
         </content>
-        <drop active=false onclick="showContent(this.parentNode)">more</drop>
+        <drop active=false onclick="showContent(this.parentNode)">show more</drop>
     </divider>
     <year>
         <month>Winter</month>
@@ -392,7 +392,7 @@
             house. I had made some new friends, who I'd hoped would stay around for longer.<br><br>
             It was rough, for me, and my parents. But I like to think it worked out in the end.
         </content>
-        <drop active=false onclick="showContent(this.parentNode)">more</drop>
+        <drop active=false onclick="showContent(this.parentNode)">show more</drop>
     </divider>
     <year>
         <month>Spring</month>
@@ -446,11 +446,11 @@
             if (content != null && drop != null) {
                 let active = drop.getAttribute("active")
                 if (active == "false") {
-                    drop.innerText = "less"
+                    drop.innerText = "show less"
                     drop.setAttribute("active", true)
                     content.setAttribute("active", true)
                 } else {
-                    drop.innerText = "more"
+                    drop.innerText = "show more"
                     drop.setAttribute("active", false)
                     content.setAttribute("active", false)
                 }
