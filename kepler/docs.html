@@ -259,7 +259,6 @@
 
     function TryLoad(item) {
         try {
-            main_content.innerHTML = ""
             LoadItem(item)
         } catch (err) {
             spinner.setAttribute("hidden", true)
@@ -268,15 +267,17 @@
     }
 
     function LoadItem(item) {
-        spinner.removeAttribute("hidden")
         const file = item.getAttribute('load')
+        if (file == current_page) return
 
         if (last_item != null) last_item.removeAttribute("selected")
+
+        spinner.removeAttribute("hidden")
+        main_content.innerHTML = ""
 
         item.setAttribute("selected", true)
         last_item = item
 
-        if (file == current_page) return
         current_page = file
 
         xhttp = new XMLHttpRequest()
