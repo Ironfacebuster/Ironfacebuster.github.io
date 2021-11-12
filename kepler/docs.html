@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../fonts/fonts.css">
+    <link rel="stylesheet" href="../css/syntax.css">
+
+    <title>Kepler Documentation</title>
+    <style>
+        body {
+            background-color: #171a1f;
+            cursor: default;
+            /* margin-left: ; */
+            padding-left: 20em;
+
+            transition: padding-left 0.25s;
+        }
+
+        sidebar {
+            width: 15em;
+            height: 100%;
+            background-color: #0e1013;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            padding-top: 15px;
+            padding-left: 10px;
+
+            overflow-x: hidden;
+
+            transition: width 0.25s, padding-left 0.25s;
+        }
+
+        sidebar[minimized="true"] {
+            width: 0px;
+            padding-left: 0px;
+            transition: width 0.25s, padding-left 0.25s;
+        }
+
+        toggle {
+            display: block;
+            position: fixed;
+
+            border-radius: 5px;
+            background-color: #202327;
+            font-weight: bolder;
+            color: white;
+            user-select: none;
+            width: fit-content;
+            bottom: 1em;
+
+            padding: 10px 15px;
+            margin-right: 15px;
+            margin-left: 15px;
+
+            transform: scale(1);
+            transition: transform 0.25s;
+        }
+
+        toggle:hover {
+            cursor: pointer;
+            transform: scale(1.15);
+            transition: transform 0.25s;
+        }
+
+        arrow {
+            display: block;
+
+            transform: rotate(0deg);
+            transition: transform 0.25s;
+        }
+
+        toggle[minimized="true"] arrow {
+            transform: rotate(180deg);
+            transition: transform 0.25s;
+        }
+
+        list {
+            user-select: none;
+            display: block;
+            overflow-y: auto;
+            overflow-x: hidden;
+            /* margin-top: 2em; */
+            /* margin-right: 0px; */
+        }
+
+        list name {
+            font-weight: bolder;
+            font-size: 30px;
+            display: block;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            margin-left: 0.5em;
+            color: rgb(190, 190, 190);
+            font-family: 'Titillium Web', Arial, Helvetica, sans-serif;
+        }
+
+        list item {
+            cursor: pointer;
+            margin-left: 2em;
+            font-size: 20px;
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: rgb(255, 255, 255);
+            font-family: 'Titillium Web', Arial, Helvetica, sans-serif;
+        }
+
+        list item[selected] {
+            cursor: pointer;
+            font-size: 24px;
+            margin-top: -3px;
+            margin-bottom: -3px;
+        }
+
+        content {
+            display: block;
+            height: fit-content;
+            padding: 15px;
+            color: white;
+            font-family: 'Titillium Web', Arial, Helvetica, sans-serif;
+        }
+
+        section {
+            margin-bottom: 15px;
+        }
+
+        spinner {
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+
+            font-size: 30px;
+
+            animation: rotating 1s linear infinite;
+        }
+
+        spinner[hidden] {
+            display: none;
+        }
+
+        /* Safari and Chrome */
+        @-webkit-keyframes rotating {
+            from {
+                -webkit-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotating {
+            from {
+                -ms-transform: rotate(0deg);
+                -moz-transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+                -o-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            to {
+                -ms-transform: rotate(360deg);
+                -moz-transform: rotate(360deg);
+                -webkit-transform: rotate(360deg);
+                -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        .rotating {
+            -webkit-animation: rotating 2s linear infinite;
+            -moz-animation: rotating 2s linear infinite;
+            -ms-animation: rotating 2s linear infinite;
+            -o-animation: rotating 2s linear infinite;
+            animation: rotating 2s linear infinite;
+        }
+
+        h1,
+        h2 {
+            user-select: none;
+        }
+
+        content {
+            margin-bottom: 5em;
+        }
+    </style>
+</head>
+
+<body>
+    <toggle onclick="ToggleSidebar(this)">
+        <arrow>🠬</arrow>
+    </toggle>
+    <sidebar minimized="false">
+        <list>
+            <section>
+                <name>Home</name>
+                <item load="./pages/home/intro.html">Introduction</item>
+            </section>
+            <section>
+                <name>Libraries</name>
+                <item load="./pages/libraries/filesystem.html">filesystem</item>
+                <item load="./pages/libraries/input.html">input</item>
+                <item load="./pages/libraries/math.html">math</item>
+                <item load="./pages/libraries/object.html">object</item>
+                <item load="./pages/libraries/random.html">random</item>
+                <item load="./pages/libraries/time.html">time</item>
+                <item load="./pages/libraries/utilities.html">utilities</item>
+            </section>
+            <section>
+                <name>Types</name>
+                <item load="./pages/types/bool.html">Boolean</item>
+                <item load="./pages/types/float.html">Float</item>
+                <item load="./pages/types/int.html">Int</item>
+                <item load="./pages/types/uint.html">uInt</item>
+                <item load="./pages/types/string.html">String</item>
+            </section>
+        </list>
+    </sidebar>
+
+    <content>
+        <spinner title="Loading..." hidden>⭮</spinner>
+        <span id="content-body">
+            <h1>Welcome to the Kepler docs!</h1>
+            If you're brand new to Kepler, click the "Introduction" option on the left to get started.
+        </span>
+    </content>
+</body>
+
+<script>
+    let main_content = document.getElementById("content-body");
+
+    function ToggleSidebar(button) {
+        const sidebar = document.querySelector('sidebar')
+        let minimized = sidebar.getAttribute('minimized') == "true"
+        console.log(minimized)
+
+        if (!minimized) {
+            button.setAttribute("minimized", true)
+            sidebar.setAttribute("minimized", true)
+            document.body.style.paddingLeft = "3em"
+        } else {
+            button.removeAttribute("minimized")
+            sidebar.setAttribute("minimized", false)
+            document.body.style.paddingLeft = "20em"
+        }
+    }
+
+    let spinner = document.getElementsByTagName("spinner")[0]
+    let current_page = "null"
+    let last_item = null
+
+    function TryLoad(item) {
+        try {
+            main_content.innerHTML = ""
+            LoadItem(item)
+        } catch (err) {
+            spinner.setAttribute("hidden", true)
+            main_content.innerHTML = "An error occurred while trying to load this page."
+        }
+    }
+
+    function LoadItem(item) {
+        spinner.removeAttribute("hidden")
+        const file = item.getAttribute('load')
+
+        if (last_item != null) last_item.removeAttribute("selected")
+
+        item.setAttribute("selected", true)
+        last_item = item
+
+        if (file == current_page) return
+        current_page = file
+
+        fetch(file.toString()).then(res => {
+            console.log(res)
+        }).catch(err => {
+            xhttp = new XMLHttpRequest()
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        spinner.setAttribute("hidden", true)
+                        main_content.innerHTML = this.responseText
+                    }
+                    if (this.status == 404) {
+                        spinner.setAttribute("hidden", true)
+                        main_content.innerHTML = "Page not found."
+                    }
+                }
+            }
+            xhttp.open("GET", file, true)
+
+            xhttp.send()
+        })
+    }
+
+    let items = document.getElementsByTagName("item")
+    for (var i = 0; i < items.length; ++i) {
+        const item = items[i]
+        item.addEventListener("click", () => {
+            TryLoad(item)
+        })
+    }
+</script>

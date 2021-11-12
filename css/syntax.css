@@ -1,0 +1,130 @@
+/*
+ *   Copyright (c) 2021 William Huddleston
+ *   All rights reserved.
+ *   License: Apache 2.0
+ */
+
+slabel {
+    user-select: none;
+    width: fit-content;
+    display: block;
+    color: #2c313c;
+    font-family: monospace;
+    font-size: 14px;
+    margin: 2em;
+    margin-bottom: 0px;
+}
+
+slabel:hover {
+    color: #495162;
+}
+
+code {
+    border-radius: 5px;
+    display: block;
+    background-color: #23272e;
+    color: white;
+    width: 30em;
+    padding: 1em;
+    margin: 2em;
+    font-family: monospace;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+output {
+    border-radius: 5px;
+    display: block;
+    background-color: #23272e;
+    color: rgb(141, 141, 141);
+    width: 30em;
+    padding: 1em;
+    margin: 2em;
+    font-family: monospace;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+code line {
+    display: block;
+    width: 100%;
+}
+
+code line:hover {
+    background-color: #2c313c;
+    cursor: default;
+}
+
+code line count {
+    cursor: default;
+    user-select: none;
+    display: inline-block;
+    color: #495162;
+    padding-right: 1em;
+    text-align: right;
+    width: 2em;
+}
+
+code line:hover count {
+    background-color: #23272e;
+    color: #abb2bf;
+}
+
+code * {
+    display: inline;
+    cursor: text;
+}
+
+code tab {
+    user-select: all;
+    display: inline-block;
+    width: 1.5em;
+}
+
+code variable {
+    color: #E06C75;
+}
+
+code function {
+    color: #61AFEF;
+}
+
+code assign {
+    color: #56B6C2;
+}
+
+code compare {
+    color: #56B6C2;
+}
+
+code operator {
+    color: #C678DD;
+}
+
+code keyword {
+    color: #D19A66
+}
+
+code internal {
+    color: #E5C07B;
+}
+
+/* static types */
+
+code number {
+    color: #D19A66
+}
+
+code string {
+    color: #98C379;
+}
+
+code bool {
+    color: #D19A66;
+}
+
+/* comments */
+
+code comment {
+    color: #7F848E;
+}
