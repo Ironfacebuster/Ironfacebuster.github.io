@@ -1,5 +1,6 @@
 <h1>Generic/Operations</h1>
-Various operations in Kepler will result in a Boolean value.<br>
+Kepler has various operations to compare values, and control code flow.<br>
+Operations in Kepler will result in a Boolean value.<br>
 
 <h3>Equality</h3>
 "Equals" is a non-strict comparison of two values. Non-strict means that if the values types are not the same type, they
@@ -58,4 +59,122 @@ The only strict equality in Kepler is the "==" operator. This returns False if t
 <output>
     False<br>
     True
+</output>
+
+<h3>Greater Than</h3>
+Greater than is a non-strict comparison. This checks if value "a" is greater than value "b".
+
+<slabel>equals.kep</slabel>
+<code>
+    <line>
+        <count>1</count>
+        <operator>print</operator>
+        <keyword>99</keyword>
+        <assign>></assign>
+        <keyword>2.0</keyword>
+    </line>
+    <line>
+        <count>2</count>
+    </line>
+    <line>
+        <count>3</count>
+        <operator>print</operator>
+        <keyword>u4</keyword>
+        <assign>></assign>
+        <keyword>1003</keyword>
+    </line>
+</code>
+<slabel>output</slabel>
+<output>
+    True<br>
+    False
+</output>
+
+<h3>Greater Than or Equal To</h3>
+Greater than or equal to is a non-strict comparison. This checks if value "a" is greater than, or equal to, the value of
+"b".
+
+<slabel>equals.kep</slabel>
+<code>
+    <line>
+        <count>1</count>
+        <operator>print</operator>
+        <keyword>56</keyword>
+        <assign>>=</assign>
+        <keyword>56.0</keyword>
+    </line>
+    <line>
+        <count>2</count>
+    </line>
+    <line>
+        <count>3</count>
+        <operator>print</operator>
+        <keyword>3</keyword>
+        <assign>>=</assign>
+        <keyword>50</keyword>
+    </line>
+</code>
+<slabel>output</slabel>
+<output>
+    True<br>
+    False
+</output>
+
+<h3>Less Than</h3>
+Less than is a non-strict comparison. This checks if value "a" is less than value "b".
+
+<slabel>equals.kep</slabel>
+<code>
+    <line>
+        <count>1</count>
+        <operator>print</operator>
+        <keyword>99</keyword>
+        <assign>></assign>
+        <keyword>2.0</keyword>
+    </line>
+    <line>
+        <count>2</count>
+    </line>
+    <line>
+        <count>3</count>
+        <operator>print</operator>
+        <keyword>u4</keyword>
+        <assign>></assign>
+        <keyword>1003</keyword>
+    </line>
+</code>
+<slabel>output</slabel>
+<output>
+    True<br>
+    False
+</output>
+
+<h3>Less Than or Equal To</h3>
+Less than or equal to is a non-strict comparison. This checks if value "a" is less than, or equal to, the value of
+"b".
+
+<slabel>equals.kep</slabel>
+<code>
+    <line>
+        <count>1</count>
+        <operator>print</operator>
+        <keyword>35</keyword>
+        <assign>&lt;=</assign>
+        <keyword>35.0</keyword>
+    </line>
+    <line>
+        <count>2</count>
+    </line>
+    <line>
+        <count>3</count>
+        <operator>print</operator>
+        <keyword>88</keyword>
+        <assign>&lt;=</assign>
+        <keyword>23</keyword>
+    </line>
+</code>
+<slabel>output</slabel>
+<output>
+    True<br>
+    False
 </output>
