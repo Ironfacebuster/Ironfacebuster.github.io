@@ -1,17 +1,168 @@
-<h1>object</h1>
+<h1>objects</h1>
 
 Kepler has no built-in support for object oriented programming. However, it's possible to include the objects library to
 emulate some of the functionality.<br><br>
 
 <section>
     <h2>Included Functions</h2>
-    <h3>create_object</h3>
-    <p>Creates a new object.</p>
-    <section>
-        <h4>Required Parameters</h4>
-        None.
-    </section>
 
-    <h4>Returns</h4>
-    (string) The object's ID.
+    <function>
+        <h3>create_obeject</h3>
+        <p>Creates a new object.</p>
+
+        <section>
+            <h4>Required Parameters</h4>
+            None.
+        </section>
+
+        <section>
+            <h4>Returns</h4>
+            (string) The object's ID.
+        </section>
+    </function>
+
+    <function>
+        <h3>object_delete</h3>
+        <p>Delete an object.</p>
+
+        <section>
+            <h4>Required Parameters</h4>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td>String</td>
+                    <td>The ID of the object.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h4>Returns</h4>
+            Nothing.
+        </section>
+    </function>
+
+    <function>
+        <h3>object_exists</h3>
+        <p>Check if an object exists.</p>
+
+        <section>
+            <h4>Required Parameters</h4>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td>String</td>
+                    <td>The ID of the object.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h4>Returns</h4>
+            (Boolean) True if the object exists, false otherwise.
+        </section>
+    </function>
+
+    <function>
+        <h3>object_get</h3>
+        <p>Get a key/value pair from an object.</p>
+
+        <section>
+            <h4>Required Parameters</h4>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td>String</td>
+                    <td>The ID of the object.</td>
+                </tr>
+                <tr>
+                    <td>key</td>
+                    <td>String</td>
+                    <td>The key of the data you want to get.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h4>Returns</h4>
+            (Any) The data associated with the key.
+        </section>
+    </function>
+
+    <function>
+        <h3>object_set</h3>
+        <p>Set a key/value pair for an object.</p>
+
+        <section>
+            <h4>Required Parameters</h4>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td>String</td>
+                    <td>The ID of the object.</td>
+                </tr>
+                <tr>
+                    <td>key</td>
+                    <td>String</td>
+                    <td>The key of the data you want to set.</td>
+                </tr>
+                <tr>
+                    <td>value</td>
+                    <td>Any</td>
+                    <td>The data to associate with the key.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h4>Returns</h4>
+            Nothing.
+        </section>
+    </function>
+
+    <function>
+        <h3>object_set</h3>
+        <p>Get a list of the keys an object has.</p>
+
+        <section>
+            <h4>Required Parameters</h4>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>id</td>
+                    <td>String</td>
+                    <td>The ID of the object.</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h4>Returns</h4>
+            (String) The keys of the object, separated by commas.
+        </section>
+    </function>
 </section>
