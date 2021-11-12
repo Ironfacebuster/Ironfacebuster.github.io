@@ -4,17 +4,17 @@
  *   License: Apache 2.0
  */
 
-function {
+libfunct {
     display: block;
     margin-bottom: 75px;
 }
 
-function h3 {
+libfunct h3 {
     font-size: 25px;
     margin-bottom: 10px;
 }
 
-function p {
+libfunct p {
     margin-top: 0px;
 }
 
