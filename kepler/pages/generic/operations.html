@@ -1,0 +1,61 @@
+<h1>Generic/Operations</h1>
+Various operations in Kepler will result in a Boolean value.<br>
+
+<h3>Equality</h3>
+"Equals" is a non-strict comparison of two values. Non-strict means that if the values types are not the same type, they
+will be converted to the same type and then compared.
+
+<slabel>equals.kep</slabel>
+<code>
+    <line>
+        <count>1</count>
+        <operator>print</operator>
+        <keyword>99</keyword>
+        <assign>equals</assign>
+        <keyword>100.0</keyword>
+    </line>
+    <line>
+        <count>2</count>
+    </line>
+    <line>
+        <count>3</count>
+        <operator>print</operator>
+        <keyword>25</keyword>
+        <assign>equals</assign>
+        <keyword>25.0</keyword>
+    </line>
+</code>
+<slabel>output</slabel>
+<output>
+    False<br>
+    True
+</output>
+
+<h3>Strict Equality</h3>
+The only strict equality in Kepler is the "==" operator. This returns False if the values are not the same type.
+
+<slabel>equals.kep</slabel>
+<code>
+    <line>
+        <count>1</count>
+        <operator>print</operator>
+        <keyword>12</keyword>
+        <assign>==</assign>
+        <keyword>12.0</keyword>
+    </line>
+    <line>
+        <count>2</count>
+    </line>
+    <line>
+        <count>3</count>
+        <operator>print</operator>
+        <keyword>73</keyword>
+        <assign>==</assign>
+        <keyword>73</keyword>
+    </line>
+</code>
+<slabel>output</slabel>
+<output>
+    False<br>
+    True
+</output>

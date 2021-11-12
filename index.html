@@ -229,6 +229,10 @@
             <blocktitle>"He makes good computer stuff"</blocktitle>
             <blocksub>Highschool Dropout</blocksub>
         </bigblock>
+        <bigblock>
+            <blocktitle>"Jack of all trades, master of some."</blocktitle>
+            <blocksub>Jenna Taylia</blocksub>
+        </bigblock>
     </scrollbox>
 
     <div id="footer">
@@ -284,7 +288,7 @@
                     let padding = 15
                     let top = active_scrollbox.getBoundingClientRect().top + window.scrollY + padding,
                         bot = active_scrollbox.getBoundingClientRect().bottom + window.scrollY -
-                            getComputedStyle(active_arrow).height.replace("px", "") - padding
+                        getComputedStyle(active_arrow).height.replace("px", "") - padding
 
                     let offset = last_toggle.getBoundingClientRect().top + window.scrollY
                     offset = Math.max(top, Math.min(offset, bot))
