@@ -1,7 +1,3 @@
-<head>
-    <link rel="stylesheet" href="../../../css/syntax.css">
-</head>
-
 <h1>Home/Introduction</h1>
 <section>
     <h2>What is Kepler?</h2>
@@ -137,5 +133,81 @@
     <slabel>output</slabel>
     <output>
         This is a function that prints a string!
+    </output>
+</section>
+<section>
+    If you thought to yourself, "what's a string?" This next section is for you!<br><br>
+    <h2>Kepler Types</h2>
+    Kepler only has a couple of types of data:
+    <ul>
+        <li onclick="TryLoad(this)" load="./pages/types/bool.html">Boolean</li>
+        <li onclick="TryLoad(this)" load="./pages/types/float.html">Float</li>
+        <li onclick="TryLoad(this)" load="./pages/types/int.html">Int</li>
+        <li onclick="TryLoad(this)" load="./pages/types/uint.html">uInt</li>
+        <li onclick="TryLoad(this)" load="./pages/types/string.html">String</li>
+    </ul>
+
+    Types can be changed to others types via "explicit casting".<br>
+    <slabel>explicit_casting.kep</slabel>
+    <code>
+        <line>
+            <count>1</count>
+            <variable>int</variable>
+            <assign>is</assign>
+            <string>1</string>
+        </line>
+        <line>
+            <count>2</count>
+        </line>
+        <line>
+            <count>3</count>
+            <keyword>print</keyword>
+            <variable>int</variable>
+            <operator>cast</operator>
+            <operator>Float</operator>
+        </line>
+    </code>
+    <slabel>output</slabel>
+    <output>
+        1.0
+    </output>
+
+    You can also use "implicit casting", or implied casting, to change the type of a variable automatically.<br>
+    This is done when two values of different types are compared to each other.<br>
+    <slabel>implicit_casting.kep</slabel>
+    <code>
+        <line>
+            <count>1</count>
+            <variable>int</variable>
+            <assign>is</assign>
+            <string>100.0</string>
+        </line>
+        <line>
+            <count>2</count>
+        </line>
+        <line>
+            <count>3</count>
+            <comment>!-- add an Int to a Float --!</comment>
+        </line>
+        <line>
+            <count>4</count>
+            <keyword>print</keyword>
+            <variable>int</variable>
+            <operator>+</operator>
+            <keyword>1</keyword>
+        </line>
+    </code>
+    <slabel>output</slabel>
+    <output>
+        101.0
+    </output>
+
+    Implicit casting can lead to errors, so always make sure your data is sound before using it!<br>
+
+    <slabel>oops!</slabel>
+    <output>
+        <error>
+            Type Error: Unable to implicitly cast type String to Int!
+        </error>
     </output>
 </section>

@@ -32,19 +32,6 @@ code {
     margin-top: 5px;
 }
 
-output {
-    border-radius: 5px;
-    display: block;
-    background-color: #23272e;
-    color: rgb(141, 141, 141);
-    max-width: 45em;
-    padding: 1em;
-    margin: 2em;
-    font-family: monospace;
-    font-size: 14px;
-    margin-top: 5px;
-}
-
 code line {
     display: block;
     width: 100%;
@@ -127,4 +114,32 @@ code bool {
 
 code comment {
     color: #7F848E;
+}
+
+/* output things */
+
+output {
+    border-radius: 5px;
+    display: block;
+    background-color: #23272e;
+    color: rgb(141, 141, 141);
+    max-width: 45em;
+    padding: 1em;
+    margin: 2em;
+    font-family: monospace;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+output error {
+    color: rgb(255, 97, 110)
+}
+
+/* media queries */
+
+@media screen and (max-width: 800px) {
+    output, code {
+        margin-left: 1em;
+        margin-right: 1em;
+    }
 }
