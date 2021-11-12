@@ -150,7 +150,7 @@
         fetch(file.toString()).then(res => {
             return res.text()
         }).then(html => {
-            main_content.innerHTML = html
+            SetMainContent(html)
             spinner.setAttribute("hidden", true)
         }).catch(err => {
             xhttp = new XMLHttpRequest()
@@ -159,11 +159,12 @@
                 if (this.readyState == 4) {
                     if (this.status == 200) {
                         spinner.setAttribute("hidden", true)
-                        main_content.innerHTML = this.responseText
+                        SetMainContent(this.responseText)
                     }
                     if (this.status == 404) {
                         spinner.setAttribute("hidden", true)
-                        main_content.innerHTML = "Page not found."
+
+                        SetMainContent(this.responseText)
                     }
                 }
             }
@@ -171,6 +172,30 @@
 
             xhttp.send()
         })
+    }
+
+    function SetMainContent(html) {
+        main_content.innerHTML = html
+
+        SetTypeLinks()
+    }
+
+    function SetTypeLinks() {
+        let types = document.getElementsByTagName("type")
+
+        for (var i = 0; i < types.length; ++i) {
+            let type = types[i]
+
+            if (!type.hasAttribute("load")) {
+                let name = type.innerText.toLowerCase()
+
+                // console.log(`./pages/types/${name}.html`)
+                type.setAttribute("load", `./pages/types/${name}.html`)
+                type.addEventListener("click", () => {
+                    TryLoad(type)
+                })
+            }
+        }
     }
 
     let items = document.getElementsByTagName("item")
