@@ -24,7 +24,7 @@ code {
     display: block;
     background-color: #23272e;
     color: white;
-    width: 45em;
+    max-width: 45em;
     padding: 1em;
     margin: 2em;
     font-family: monospace;
@@ -37,7 +37,7 @@ output {
     display: block;
     background-color: #23272e;
     color: rgb(141, 141, 141);
-    width: 45em;
+    max-width: 45em;
     padding: 1em;
     margin: 2em;
     font-family: monospace;
