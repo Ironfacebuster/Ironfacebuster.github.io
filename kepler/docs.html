@@ -333,7 +333,9 @@
         // xhttp.send()
 
         fetch(file.toString()).then(res => {
-            main_content.innerHTML = res.text()
+            return res.text()
+        }).then(html => {
+            main_content.innerHTML = html
         }).catch(err => {
             xhttp = new XMLHttpRequest()
 
