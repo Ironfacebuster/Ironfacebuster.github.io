@@ -1,8 +1,8 @@
 <h1>Generic/Operations</h1>
 Kepler has various operations to compare values, and control code flow.<br>
-Operations in Kepler will result in a Boolean value.<br>
+Operations in Kepler will always result in a Boolean value, representing if the comparison was valid or not.<br>
 
-<h3>Equality</h3>
+<h2>Equality</h2>
 "Equals" is a non-strict comparison of two values. Non-strict means that if the values types are not the same type, they
 will be converted to the same type and then compared.
 
@@ -32,7 +32,7 @@ will be converted to the same type and then compared.
     True
 </output>
 
-<h3>Strict Equality</h3>
+<h2>Strict Equality</h2>
 The only strict equality in Kepler is the "==" operator. This returns False if the values are not the same type.
 
 <slabel>strict_equals.kep</slabel>
@@ -61,7 +61,7 @@ The only strict equality in Kepler is the "==" operator. This returns False if t
     True
 </output>
 
-<h3>Greater Than</h3>
+<h2>Greater Than</h2>
 Greater than is a non-strict comparison. This checks if value "a" is greater than value "b".
 
 <slabel>gt.kep</slabel>
@@ -90,7 +90,7 @@ Greater than is a non-strict comparison. This checks if value "a" is greater tha
     False
 </output>
 
-<h3>Greater Than or Equal To</h3>
+<h2>Greater Than or Equal To</h2>
 Greater than or equal to is a non-strict comparison. This checks if value "a" is greater than, or equal to, the value of
 "b".
 
@@ -120,7 +120,7 @@ Greater than or equal to is a non-strict comparison. This checks if value "a" is
     False
 </output>
 
-<h3>Less Than</h3>
+<h2>Less Than</h2>
 Less than is a non-strict comparison. This checks if value "a" is less than value "b".
 
 <slabel>lt.kep</slabel>
@@ -149,7 +149,7 @@ Less than is a non-strict comparison. This checks if value "a" is less than valu
     True
 </output>
 
-<h3>Less Than or Equal To</h3>
+<h2>Less Than or Equal To</h2>
 Less than or equal to is a non-strict comparison. This checks if value "a" is less than, or equal to, the value of
 "b".
 
