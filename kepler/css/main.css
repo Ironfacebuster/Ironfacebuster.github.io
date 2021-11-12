@@ -4,6 +4,16 @@
  *   License: Apache 2.0
  */
 
+body {
+    background-color: #171a1f;
+    cursor: default;
+    overflow-x: hidden;
+    /* width: 100%; */
+    padding-left: 2em;
+    max-width: 100%;
+    transition: transform 0.25s;
+}
+
 sidebar {
     width: 15em;
     height: 100%;
