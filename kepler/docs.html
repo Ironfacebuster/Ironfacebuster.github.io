@@ -91,12 +91,13 @@
     let spinner = document.getElementsByClassName("loading")[0]
     let current_page = "null"
 
-    function TryLoad(item) {
+    function TryLoad(item, pushstate = true) {
         try {
             let file = item.getAttribute('load')
-            history.pushState({
-                target: file
-            }, `Kepler - ${item.innerText}`, `?target=${item.innerText}`)
+            if (pushstate)
+                history.pushState({
+                    target: file
+                }, `Kepler - ${item.innerText}`, `?target=${item.innerText}`)
             LoadItem(file)
         } catch (err) {
             spinner.setAttribute("hidden", true)
@@ -124,7 +125,7 @@
         let items = document.getElementsByTagName("item")
         for (var i = 0; i < items.length; ++i) {
             if (items[i].innerText == target) {
-                TryLoad(items[i])
+                TryLoad(items[i], false)
                 break
             }
         }
