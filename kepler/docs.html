@@ -100,7 +100,8 @@
 
             if (pushstate)
                 history.pushState({
-                    target: file
+                    target: file,
+                    title: document.title
                 }, `Kepler - ${item.innerText}`, `?target=${item.innerText}`)
 
         }).catch((err) => {
@@ -114,6 +115,7 @@
 
         try {
             LoadItem(event.state.target)
+            document.title = event.state.title
         } catch (err) {
             console.log(err)
             ShowError()
