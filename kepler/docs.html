@@ -105,6 +105,8 @@
     }
 
     window.onpopstate = function (event) {
+        if (event.state.target == null) return
+
         try {
             LoadItem(event.state.target)
         } catch (err) {
@@ -112,6 +114,21 @@
             main_content.innerHTML = "An error occurred while trying to load this page."
         }
     }
+
+    window.addEventListener("load", (e) => {
+        let params = new URLSearchParams(window.location.search)
+        if (!params.has("target")) return
+
+        let target = params.get("target")
+
+        let items = document.getElementsByTagName("item")
+        for (var i = 0; i < items.length; ++i) {
+            if (items[i].innerText == target) {
+                TryLoad(items[i])
+                break
+            }
+        }
+    })
 
     function LoadItem(file) {
         // const file = item.getAttribute('load')
