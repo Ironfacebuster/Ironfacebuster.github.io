@@ -103,7 +103,8 @@
                     target: file
                 }, `Kepler - ${item.innerText}`, `?target=${item.innerText}`)
 
-        }).catch(() => {
+        }).catch((err) => {
+            console.log(err)
             ShowError()
         })
     }
@@ -114,6 +115,7 @@
         try {
             LoadItem(event.state.target)
         } catch (err) {
+            console.log(err)
             ShowError()
         }
     }
