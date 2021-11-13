@@ -93,15 +93,28 @@
 
     function TryLoad(item) {
         try {
-            LoadItem(item)
+            let file = item.getAttribute('load')
+            history.pushState({
+                target: file
+            }, `Kepler - ${item.innerText}`, `?target=${item.innerText}`)
+            LoadItem(file)
         } catch (err) {
             spinner.setAttribute("hidden", true)
             main_content.innerHTML = "An error occurred while trying to load this page."
         }
     }
 
-    function LoadItem(item) {
-        const file = item.getAttribute('load')
+    window.onpopstate = function (event) {
+        try {
+            LoadItem(event.state.target)
+        } catch (err) {
+            spinner.setAttribute("hidden", true)
+            main_content.innerHTML = "An error occurred while trying to load this page."
+        }
+    }
+
+    function LoadItem(file) {
+        // const file = item.getAttribute('load')
         if (file == current_page) return
 
         spinner.removeAttribute("hidden")
