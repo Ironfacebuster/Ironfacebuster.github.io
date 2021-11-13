@@ -96,7 +96,7 @@
         document.title = `Loading ${item.innerText} - Kepler Docs`
 
         LoadItem(file).then(() => {
-            document.title = `${items.innerText} - Kepler Docs`
+            document.title = `${item.innerText} - Kepler Docs`
 
             if (pushstate)
                 history.pushState({
