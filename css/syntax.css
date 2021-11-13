@@ -32,9 +32,15 @@ code {
     margin-top: 5px;
 }
 
+code * {
+    font-size: 14px;
+    margin-right: 0.5em;
+}
+
 code line {
     display: block;
     width: 100%;
+    font-size: 0;
 }
 
 code line:hover {
@@ -50,6 +56,7 @@ code line count {
     padding-right: 1em;
     text-align: right;
     width: 2em;
+    margin-right: 0;
 }
 
 code line:hover count {
