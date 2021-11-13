@@ -92,17 +92,20 @@
     let current_page = "null"
 
     function TryLoad(item, pushstate = true) {
-        try {
-            let file = item.getAttribute('load')
+        let file = filename ? filename : item.getAttribute('load')
+        document.title = `Loading ${item.innerText} - Kepler Docs`
+
+        LoadItem(file).then(() => {
+            document.title = `${items[i].innerText} - Kepler Docs`
+
             if (pushstate)
                 history.pushState({
                     target: file
                 }, `Kepler - ${item.innerText}`, `?target=${item.innerText}`)
-            LoadItem(file)
-        } catch (err) {
-            spinner.setAttribute("hidden", true)
-            main_content.innerHTML = "An error occurred while trying to load this page."
-        }
+
+        }).catch(() => {
+            ShowError()
+        })
     }
 
     window.onpopstate = function (event) {
@@ -111,8 +114,7 @@
         try {
             LoadItem(event.state.target)
         } catch (err) {
-            spinner.setAttribute("hidden", true)
-            main_content.innerHTML = "An error occurred while trying to load this page."
+            ShowError()
         }
     }
 
@@ -131,64 +133,54 @@
         }
     })
 
-    function LoadItem(file) {
-        // const file = item.getAttribute('load')
-        if (file == current_page) return
+    async function LoadItem(file) {
+        return new Promise((res, rej) => {
+            if (file == current_page) return
 
-        spinner.removeAttribute("hidden")
-        // main_content.innerHTML = ""
+            spinner.removeAttribute("hidden")
+            // main_content.innerHTML = ""
 
-        let items = document.getElementsByTagName("item")
-        for (var i = 0; i < items.length; ++i) {
-            if (items[i].getAttribute("load") == file)
-                items[i].setAttribute("selected", true)
-            else
-                items[i].removeAttribute("selected")
-        }
+            let items = document.getElementsByTagName("item")
+            for (var i = 0; i < items.length; ++i) {
+                if (items[i].getAttribute("load") == file)
+                    items[i].setAttribute("selected", true)
+                else
+                    items[i].removeAttribute("selected")
+            }
 
-        current_page = file
+            current_page = file
 
-        // xhttp = new XMLHttpRequest()
-        // xhttp.onreadystatechange = function () {
-        //     if (this.readyState == 4) {
-        //         if (this.status == 200) {
-        //             spinner.setAttribute("hidden", true)
-        //             main_content.innerHTML = this.responseText
-        //         }
-        //         if (this.status == 404) {
-        //             spinner.setAttribute("hidden", true)
-        //             main_content.innerHTML = "Page not found."
-        //         }
-        //     }
-        // }
-        // xhttp.open("GET", file, true)
+            fetch(file.toString()).then(res => {
+                return res.text()
+            }).then(html => {
+                SetMainContent(html)
+                spinner.setAttribute("hidden", true)
 
-        // xhttp.send()
+                res()
+            }).catch(err => {
+                // fallback to xhttp
+                xhttp = new XMLHttpRequest()
 
-        fetch(file.toString()).then(res => {
-            return res.text()
-        }).then(html => {
-            SetMainContent(html)
-            spinner.setAttribute("hidden", true)
-        }).catch(err => {
-            xhttp = new XMLHttpRequest()
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4) {
+                        if (this.status == 200) {
+                            res()
+                            spinner.setAttribute("hidden", true)
+                            SetMainContent(this.responseText, file)
+                        }
+                        if (this.status == 404) {
+                            spinner.setAttribute("hidden", true)
 
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4) {
-                    if (this.status == 200) {
-                        spinner.setAttribute("hidden", true)
-                        SetMainContent(this.responseText)
-                    }
-                    if (this.status == 404) {
-                        spinner.setAttribute("hidden", true)
-
-                        SetMainContent(this.responseText)
+                            rej(this.responseText)
+                            SetMainContent(this.responseText, file)
+                        }
                     }
                 }
-            }
-            xhttp.open("GET", file, true)
+                xhttp.open("GET", file, true)
 
-            xhttp.send()
+                xhttp.send()
+            })
+
         })
     }
 
@@ -222,6 +214,12 @@
         item.addEventListener("click", () => {
             TryLoad(item)
         })
+    }
+
+    let ShowError = () => {
+        document.title = `Error - Kepler Docs`
+        spinner.setAttribute("hidden", true)
+        main_content.innerHTML = "An error occurred while trying to load this page."
     }
 </script>
 
