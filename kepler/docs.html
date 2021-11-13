@@ -92,7 +92,7 @@
     let current_page = "null"
 
     function TryLoad(item, pushstate = true) {
-        let file = filename ? filename : item.getAttribute('load')
+        let file = item.getAttribute('load')
         document.title = `Loading ${item.innerText} - Kepler Docs`
 
         LoadItem(file).then(() => {
@@ -154,8 +154,6 @@
                 return res.text()
             }).then(html => {
                 SetMainContent(html)
-                spinner.setAttribute("hidden", true)
-
                 res()
             }).catch(err => {
                 // fallback to xhttp
@@ -164,15 +162,12 @@
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4) {
                         if (this.status == 200) {
-                            res()
-                            spinner.setAttribute("hidden", true)
                             SetMainContent(this.responseText, file)
+                            res()
                         }
                         if (this.status == 404) {
-                            spinner.setAttribute("hidden", true)
-
-                            rej(this.responseText)
                             SetMainContent(this.responseText, file)
+                            rej(this.responseText)
                         }
                     }
                 }
@@ -186,8 +181,8 @@
 
     function SetMainContent(html) {
         main_content.innerHTML = html
-
         SetTypeLinks()
+        spinner.setAttribute("hidden", true)
     }
 
     function SetTypeLinks() {
