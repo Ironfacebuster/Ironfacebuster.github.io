@@ -25,10 +25,10 @@
 </head>
 
 <body>
-    <toggle onclick="ToggleSidebar(this)">
+    <toggle onclick="ToggleSidebar(this)" minimized="true">
         <arrow>
     </toggle>
-    <sidebar minimized="false">
+    <sidebar minimized="true">
         <list style="margin-bottom: 5em;">
             <section>
                 <name>Home</name>
@@ -60,13 +60,14 @@
         </list>
     </sidebar>
 
-    <content>
+    <content expanded="true">
         <div class="loading" style="position: fixed;" hidden>
             <spinner title="Loading...">&#x2B6E;</spinner> Loading...
         </div>
         <span id="content-body">
             <h1>Welcome to the Kepler docs!</h1>
-            If you're brand new to Kepler, click the "Introduction" option on the left to get started.
+            If you're brand new to Kepler, click the "Introduction" option on the left to get started.<br><br>
+            Click the arrow on the bottom left to open the navigation sidebar.<br><br>
         </span>
 
         <!-- remove this -->
