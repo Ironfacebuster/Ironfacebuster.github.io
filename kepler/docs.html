@@ -100,9 +100,12 @@
 
     function TryLoad(item, pushstate = true) {
         let file = item.getAttribute('load')
+
+        if (file == current_page) return
         document.title = `Loading ${item.innerText} - Kepler Docs`
 
         LoadItem(file).then(() => {
+
             document.title = `${item.innerText} - Kepler Docs`
 
             if (pushstate)
@@ -146,7 +149,6 @@
 
     async function LoadItem(file) {
         return new Promise((res, rej) => {
-            if (file == current_page) return
 
             spinner.removeAttribute("hidden")
             // main_content.innerHTML = ""
