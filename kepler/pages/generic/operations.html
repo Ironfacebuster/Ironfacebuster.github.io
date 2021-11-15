@@ -1,180 +1,379 @@
-<h1>Generic/Operations</h1>
-Kepler has various operations to compare values, and control code flow.<br>
-Operations in Kepler will always result in a Boolean value, representing if the comparison was valid or not.<br>
+<style>
+    operator {
+        display: inline-block;
+        font-family: monospace;
+        font-weight: bolder;
+        padding: 2px;
+    }
+</style>
 
-<h2>Equality</h2>
-"Equals" is a non-strict comparison of two values. Non-strict means that if the values types are not the same type, they
-will be converted to the same type and then compared.
+<h1>Operations</h1>
 
-<slabel>equals.kep</slabel>
-<code>
-    <line>
+Kepler provides a number of operations that can be performed to manipulate values.<br>
+All operations, unless explicitly stated, will return a type of the first parameter of the operation.<br>
+
+<section>
+    <h2>Addition</h2>
+    Add two values together.<br><br>
+    The operator for addition is <operator>+</operator>.<br>
+
+    The following is an example of how to use the addition operator:
+    <slabel>add.kep</slabel>
+    <code>
         <count>1</count>
-        <operator>print</operator>
-        <keyword>99</keyword>
-        <assign>equals</assign>
-        <keyword>100.0</keyword>
-    </line>
-    <line>
-        <count>2</count>
-    </line>
-    <line>
-        <count>3</count>
-        <operator>print</operator>
-        <keyword>25</keyword>
-        <assign>equals</assign>
-        <keyword>25.0</keyword>
-    </line>
-</code>
-<slabel>output</slabel>
-<output>
-    False<br>
-    True
-</output>
+        <keyword>print</keyword>
+        <keyword>1</keyword>
+        <operator>+</operator>
+        <keyword>1</keyword>
+    </code>
 
-<h2>Strict Equality</h2>
-The only strict equality in Kepler is the "==" operator. This returns False if the values are not the same type.
+    <slabel>output</slabel>
+    <output>
+        2
+    </output>
 
-<slabel>strict_equals.kep</slabel>
-<code>
-    <line>
+    <h3>Compatibility Table</h3>
+    Some operations may not be available on all types, or will operate differently depending on the type.<br>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Compatible</th>
+        </tr>
+        <tr>
+            <td>
+                <type>Boolean</type>
+            </td>
+            <td>No, unless casted to a compatible type.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>Float</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>Int</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>uInt</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>String</type>
+            </td>
+            <td>Yes, however, doing so will result in a new string with the content appended or prepended.</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h2>Subtraction</h2>
+    Get the difference between two values.<br><br>
+    The operator for subtraction is <operator>-</operator>.<br>
+
+    The following is an example of how to use the subtraction operator:
+    <slabel>subtract.kep</slabel>
+    <code>
         <count>1</count>
-        <operator>print</operator>
-        <keyword>12</keyword>
-        <assign>==</assign>
-        <keyword>12.0</keyword>
-    </line>
-    <line>
-        <count>2</count>
-    </line>
-    <line>
-        <count>3</count>
-        <operator>print</operator>
-        <keyword>73</keyword>
-        <assign>==</assign>
-        <keyword>73</keyword>
-    </line>
-</code>
-<slabel>output</slabel>
-<output>
-    False<br>
-    True
-</output>
+        <keyword>print</keyword>
+        <keyword>1005</keyword>
+        <operator>-</operator>
+        <keyword>200</keyword>
+    </code>
 
-<h2>Greater Than</h2>
-Greater than is a non-strict comparison. This checks if value "a" is greater than value "b".
+    <slabel>output</slabel>
+    <output>
+        805
+    </output>
 
-<slabel>gt.kep</slabel>
-<code>
-    <line>
+    <h3>Compatibility Table</h3>
+    Some operations may not be available on all types, or will operate differently depending on the type.<br>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Compatible</th>
+        </tr>
+        <tr>
+            <td>
+                <type>Boolean</type>
+            </td>
+            <td>No, unless casted to a compatible type.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>Float</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>Int</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>uInt</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>String</type>
+            </td>
+            <td>No, unless casted to a compatible type.</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h2>Multiplication</h2>
+    Multiply two values together.<br><br>
+    The operator for multiplication is <operator>*</operator>.<br>
+
+    The following is an example of how to use the multiplication operator:
+    <slabel>multiply.kep</slabel>
+    <code>
         <count>1</count>
-        <operator>print</operator>
-        <keyword>99</keyword>
-        <assign>></assign>
-        <keyword>2.0</keyword>
-    </line>
-    <line>
-        <count>2</count>
-    </line>
-    <line>
-        <count>3</count>
-        <operator>print</operator>
-        <keyword>u4</keyword>
-        <assign>></assign>
-        <keyword>1003</keyword>
-    </line>
-</code>
-<slabel>output</slabel>
-<output>
-    True<br>
-    False
-</output>
+        <keyword>print</keyword>
+        <keyword>5.25</keyword>
+        <operator>*</operator>
+        <keyword>3.5</keyword>
+    </code>
 
-<h2>Greater Than or Equal To</h2>
-Greater than or equal to is a non-strict comparison. This checks if value "a" is greater than, or equal to, the value of
-"b".
+    <slabel>output</slabel>
+    <output>
+        18.375
+    </output>
 
-<slabel>gtoe.kep</slabel>
-<code>
-    <line>
+    <h3>Compatibility Table</h3>
+    Some operations may not be available on all types, or will operate differently depending on the type.<br>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Compatible</th>
+        </tr>
+        <tr>
+            <td>
+                <type>Boolean</type>
+            </td>
+            <td>No, unless casted to a compatible type.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>Float</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>Int</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>uInt</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>String</type>
+            </td>
+            <td>No, unless casted to a compatible type.</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h2>Divide</h2>
+    Divide one value by another.<br><br>
+    The operator for division is <operator>/</operator>.<br>
+
+    The following is an example of how to use the division operator:
+    <slabel>divide.kep</slabel>
+    <code>
         <count>1</count>
-        <operator>print</operator>
-        <keyword>56</keyword>
-        <assign>>=</assign>
-        <keyword>56.0</keyword>
-    </line>
-    <line>
-        <count>2</count>
-    </line>
-    <line>
-        <count>3</count>
-        <operator>print</operator>
-        <keyword>3</keyword>
-        <assign>>=</assign>
-        <keyword>50</keyword>
-    </line>
-</code>
-<slabel>output</slabel>
-<output>
-    True<br>
-    False
-</output>
+        <keyword>print</keyword>
+        <keyword>u48</keyword>
+        <operator>/</operator>
+        <keyword>u6</keyword>
+    </code>
 
-<h2>Less Than</h2>
-Less than is a non-strict comparison. This checks if value "a" is less than value "b".
+    <slabel>output</slabel>
+    <output>
+        u8
+    </output>
 
-<slabel>lt.kep</slabel>
-<code>
-    <line>
+    <h3>Compatibility Table</h3>
+    Some operations may not be available on all types, or will operate differently depending on the type.<br>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Compatible</th>
+        </tr>
+        <tr>
+            <td>
+                <type>Boolean</type>
+            </td>
+            <td>No, unless casted to a compatible type.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>Float</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>Int</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>uInt</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>String</type>
+            </td>
+            <td>No, unless casted to a compatible type.</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h2>Modulo</h2>
+    Modulate a value by another.<br>
+
+    Modulo is the only operator that does not result in the same type as its inputs.
+    Modulo always results in a <type>Float</type><br><br>
+
+    The operator for modulu is <operator>%</operator>.<br>
+
+    The following is an example of how to use the modulo operator:
+
+    <slabel>modulo.kep</slabel>
+    <code>
         <count>1</count>
-        <operator>print</operator>
-        <keyword>99</keyword>
-        <assign>&lt;</assign>
-        <keyword>2.0</keyword>
-    </line>
-    <line>
-        <count>2</count>
-    </line>
-    <line>
-        <count>3</count>
-        <operator>print</operator>
-        <keyword>u4</keyword>
-        <assign>&lt;</assign>
-        <keyword>1003</keyword>
-    </line>
-</code>
-<slabel>output</slabel>
-<output>
-    False<br>
-    True
-</output>
+        <keyword>print</keyword>
+        <keyword>10</keyword>
+        <operator>%</operator>
+        <keyword>5</keyword>
+    </code>
 
-<h2>Less Than or Equal To</h2>
-Less than or equal to is a non-strict comparison. This checks if value "a" is less than, or equal to, the value of
-"b".
+    <slabel>output</slabel>
+    <output>
+        0.0
+    </output>
 
-<slabel>ltoe.kep</slabel>
-<code>
-    <line>
+    <h3>Compatibility Table</h3>
+    Some operations may not be available on all types, or will operate differently depending on the type.<br>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Compatible</th>
+        </tr>
+        <tr>
+            <td>
+                <type>Boolean</type>
+            </td>
+            <td>No, unless casted to a compatible type.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>Float</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>Int</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>uInt</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>String</type>
+            </td>
+            <td>No, unless casted to a compatible type.</td>
+        </tr>
+    </table>
+</section>
+
+<section>
+    <h2>Power</h2>
+    Raise a number to the power of another.<br><br>
+    The operator for power is <operator>^</operator>.<br>
+
+    The following is an example of how to use the power operator:
+
+    <slabel>power.kep</slabel>
+    <code>
         <count>1</count>
-        <operator>print</operator>
-        <keyword>35</keyword>
-        <assign>&lt;=</assign>
-        <keyword>35.0</keyword>
-    </line>
-    <line>
-        <count>2</count>
-    </line>
-    <line>
-        <count>3</count>
-        <operator>print</operator>
-        <keyword>88</keyword>
-        <assign>&lt;=</assign>
-        <keyword>23</keyword>
-    </line>
-</code>
-<slabel>output</slabel>
-<output>
-    True<br>
-    False
-</output>
+        <keyword>print</keyword>
+        <keyword>4</keyword>
+        <operator>^</operator>
+        <keyword>2</keyword>
+    </code>
+
+    <slabel>output</slabel>
+    <output>
+        16
+    </output>
+
+    <h3>Compatibility Table</h3>
+    Some operations may not be available on all types, or will operate differently depending on the type.<br>
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Compatible</th>
+        </tr>
+        <tr>
+            <td>
+                <type>Boolean</type>
+            </td>
+            <td>No, unless casted to a compatible type.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>Float</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>Int</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>uInt</type>
+            </td>
+            <td>Yes.</td>
+        </tr>
+        <tr>
+            <td>
+                <type>String</type>
+            </td>
+            <td>No, unless casted to a compatible type.</td>
+        </tr>
+    </table>
+</section>
