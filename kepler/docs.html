@@ -25,10 +25,10 @@
 </head>
 
 <body>
-    <toggle onclick="ToggleSidebar(this)" minimized="true">
+    <toggle onclick="ToggleSidebar(this)">
         <arrow>
     </toggle>
-    <sidebar minimized="true">
+    <sidebar>
         <list style="margin-bottom: 5em;">
             <section>
                 <name>Home</name>
@@ -62,7 +62,7 @@
         </list>
     </sidebar>
 
-    <content expanded="true">
+    <content>
         <div class="loading" style="position: fixed;" hidden>
             <spinner title="Loading...">&#x2B6E;</spinner> Loading...
         </div>
@@ -80,23 +80,28 @@
 <script>
     let main_content = document.getElementById("content-body");
 
-    function ToggleSidebar(button) {
-        const sidebar = document.querySelector('sidebar')
-        let minimized = sidebar.getAttribute('minimized') == "true"
-        console.log(minimized)
+    const sidebar = document.querySelector('sidebar')
+    let button = document.getElementsByTagName("toggle")[0]
 
-        if (!minimized) {
+    const HideSidebar = () => {
             button.setAttribute("minimized", true)
             sidebar.setAttribute("minimized", true)
-
             main_content.parentNode.setAttribute("expanded", true)
-            // document.body.style.paddingLeft = "2em"
-        } else {
+        },
+        ShowSidebar = () => {
             button.removeAttribute("minimized")
             sidebar.setAttribute("minimized", false)
             main_content.parentNode.removeAttribute("expanded")
-            // document.body.style.paddingLeft = "5em"
         }
+
+    function ToggleSidebar() {
+        let minimized = sidebar.getAttribute('minimized') == "true"
+        console.log(minimized)
+
+        if (!minimized)
+            HideSidebar()
+        else
+            ShowSidebar()
     }
 
     let spinner = document.getElementsByClassName("loading")[0]
@@ -137,6 +142,8 @@
     }
 
     window.addEventListener("load", (e) => {
+        if (window.innerWidth < 800) HideSidebar()
+
         let params = new URLSearchParams(window.location.search)
         if (!params.has("target")) return
 
