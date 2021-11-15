@@ -213,6 +213,25 @@ li[load] {
     }
 }
 
+@media screen and (max-width: 330px) {
+    sidebar {
+        width: calc(100vw - 10px);
+    }
+    toggle {
+        transform: none;
+        left: calc(100vw - (2em + 35px));
+        transition: left 0.25s;
+    }
+    toggle[minimized="true"] {
+        transform: none;
+        left: 0;
+        transition: left 0.25s;
+    }
+    content {
+        transform: translateX(calc(15em + 100vw));
+    }
+}
+
 type {
     cursor: pointer;
     border-radius: 5px;
