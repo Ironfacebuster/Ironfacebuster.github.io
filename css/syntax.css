@@ -9,7 +9,7 @@ slabel {
     width: fit-content;
     display: block;
     color: #2c313c;
-    font-family: monospace;
+    font-family: 'Consolas', monospace;
     font-size: 14px;
     margin: 2em;
     margin-bottom: 0px;
@@ -27,7 +27,7 @@ code {
     max-width: 45em;
     padding: 1em;
     margin: 2em;
-    font-family: monospace;
+    font-family: 'Consolas', monospace;
     font-size: 14px;
     margin-top: 5px;
 }
@@ -133,7 +133,7 @@ output {
     max-width: 45em;
     padding: 1em;
     margin: 2em;
-    font-family: monospace;
+    font-family: 'Consolas', monospace;
     font-size: 14px;
     margin-top: 5px;
 }
