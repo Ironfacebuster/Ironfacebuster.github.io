@@ -24,13 +24,14 @@ sidebar {
     padding-top: 15px;
     padding-left: 10px;
     overflow-x: hidden;
-    transition: width 0.25s, padding-left 0.25s;
+    transition: width 0.25s, padding-left 0.25s, filter 0.25s;
 }
 
 sidebar[minimized="true"] {
     width: 0px;
     padding-left: 0px;
-    transition: width 0.25s, padding-left 0.25s;
+    filter: brightness(5%);
+    transition: width 0.25s, padding-left 0.25s, filter 0.25s;
 }
 
 toggle {
