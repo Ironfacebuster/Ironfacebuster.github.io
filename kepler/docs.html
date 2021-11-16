@@ -117,6 +117,9 @@
 
             document.title = `${item.innerText} - Kepler Docs`
 
+            if (window.innerWidth <= 330)
+                HideSidebar()
+
             if (pushstate)
                 history.pushState({
                     target: file,
