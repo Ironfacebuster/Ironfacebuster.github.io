@@ -28,6 +28,9 @@
     <toggle onclick="ToggleSidebar(this)">
         <arrow>
     </toggle>
+    <div class="loading" style="position: fixed;" hidden>
+        <spinner title="Loading...">&#x2B6E;</spinner> Loading...
+    </div>
     <sidebar>
         <list style="margin-bottom: 5em;">
             <section>
@@ -63,9 +66,6 @@
     </sidebar>
 
     <content>
-        <div class="loading" style="position: fixed;" hidden>
-            <spinner title="Loading...">&#x2B6E;</spinner> Loading...
-        </div>
         <span id="content-body">
             <h1>Welcome to the Kepler docs!</h1>
             If you're brand new to Kepler, click the "Introduction" option on the left to get started.<br><br>
@@ -73,6 +73,76 @@
         </span>
 
         <!-- remove this -->
+        <h1>Logical Operators</h1>
+
+        Sometimes you need to combine two or more conditions. This is where logical operators come in.<br><br>
+
+        <section>
+            <h2>And</h2>
+            Return True if both statements are True.<br><br>
+
+            The following is an example of how to use the "and" operator:
+            <slabel>and.kep</slabel>
+            <code>
+                <line>
+                    <count>1</count>
+                    <keyword>print</keyword>
+                    <keyword>True</keyword>
+                    <operator>and</operator>
+                    <keyword>False</keyword>
+                </line>
+            </code>
+
+            <slabel>output</slabel>
+            <output>
+                False
+            </output>
+        </section>
+
+        <section>
+            <h2>Or</h2>
+            Return True if either statements are True.<br><br>
+
+            The following is an example of how to use the "or" operator:
+            <slabel>or.kep</slabel>
+            <code>
+                <line>
+                    <count>1</count>
+                    <keyword>print</keyword>
+                    <keyword>False</keyword>
+                    <operator>or</operator>
+                    <keyword>True</keyword>
+                </line>
+            </code>
+
+            <slabel>output</slabel>
+            <output>
+                True
+            </output>
+        </section>
+
+        <section>
+            <h2>Not</h2>
+            Invert the result of another operator.<br><br>
+
+            The following is an example of how to use the "not" operator:
+            <slabel>not.kep</slabel>
+            <code>
+                <line>
+                    <count>1</count>
+                    <keyword>print</keyword>
+                    <operator>not</operator>
+                    <keyword>True</keyword>
+                    <operator>and</operator>
+                    <keyword>True</keyword>
+                </line>
+            </code>
+
+            <slabel>output</slabel>
+            <output>
+                False
+            </output>
+        </section>
         <!-- remove this -->
     </content>
 </body>
