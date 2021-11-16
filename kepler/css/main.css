@@ -235,6 +235,9 @@ li[load] {
         padding-bottom: 0;
         max-width: 100%;
     }
+    sidebar {
+        padding-top: 0;
+    }
 }
 
 @media screen and (max-width: 330px) {
