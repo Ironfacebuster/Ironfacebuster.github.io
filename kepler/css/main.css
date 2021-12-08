@@ -238,9 +238,10 @@ li[load] {
     }
 
     content {
-        margin-left: 1em;
-        margin-right: 1em;
+        margin: 0px;
         padding: 0px;
+        padding-left: 1em;
+        padding-right: 1em;
         padding-top: 0;
         padding-bottom: 0;
         max-width: 100%;
