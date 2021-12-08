@@ -215,6 +215,7 @@ h1, h2 {
 
 content {
     margin-bottom: 5em;
+    margin-left: 2em;
     transform: translateX(15.5em);
     transition: transform 0.25s;
 }
@@ -268,18 +269,20 @@ li[load] {
     }
 
     content {
-        margin-left: 1em;
-        margin-right: 1em;
+        margin: 0px;
         padding: 0px;
+        padding-left: 1em;
+        padding-right: 1em;
         transform: translateX(calc(15em + 100vw));
     }
 }
 
 @media screen and (max-width: 240px) {
     content {
-        margin-left: 0.25em;
-        margin-right: 0.25em;
+        margin: 0px;
         padding: 0px;
+        padding-left: 0.25em;
+        padding-right: 0.25em;
         transform: translateX(calc(15em + 100vw));
     }
 }
