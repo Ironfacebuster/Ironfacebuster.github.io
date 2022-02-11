@@ -63,9 +63,8 @@
                 sidebar.style.marginTop = `${new_height}px`
 
                 let content = document.querySelector('content')
-                content.style.height = `calc(100% - ${new_height}px - 25px)`
+                content.style.height = `calc(100% - ${new_height}px - 1px)`
             }
-            // content.style.marginTop = `${new_height}px`
 
             window.addEventListener("scroll", () => {
                 // fix navbar to top of screen
