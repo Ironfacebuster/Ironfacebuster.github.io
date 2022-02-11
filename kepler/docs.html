@@ -21,6 +21,59 @@
     <link rel="stylesheet" href="./css/functions.css">
     <link rel="stylesheet" href="./css/tables.css">
 
+    <!-- navbar things -->
+    <link rel="stylesheet" href="./css/navbar.css">
+    <script defer>
+        function ScrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        let px_to_int = (px) => {
+            return parseInt(px.replace("px", ""))
+        }
+
+        let get_nav_height = () => {
+            let nav_style = getComputedStyle(document.getElementById("navbar"))
+
+            let new_height = [nav_style.height, nav_style.marginTop, nav_style.marginBottom, nav_style
+                .paddingTop, nav_style.paddingBottom
+            ].map((a) => {
+                return px_to_int(a)
+            }).reduce((a, b) => a + b)
+
+            return new_height
+        }
+
+        window.addEventListener("load", () => {
+            let nav = document.getElementById("navbar")
+
+            let spacer = document.getElementById("nav_spacer")
+            let new_height = get_nav_height()
+
+            spacer.style.height = new_height
+
+            let sidebar = document.querySelector('sidebar')
+            sidebar.style.height =
+                `calc(100% - ${new_height}px)`
+            sidebar.style.marginTop = `${new_height}px`
+
+            window.addEventListener("scroll", () => {
+                // fix navbar to top of screen
+                if (window.scrollY > 0) {
+                    nav.style.position = "fixed"
+                    nav.style.top = "0px"
+                    spacer.style.display = "block"
+                } else {
+                    nav.style.position = "static"
+                    spacer.style.display = "none"
+                }
+            })
+        })
+    </script>
+
     <title>Kepler Documentation</title>
 </head>
 
@@ -31,6 +84,19 @@
     <div class="loading" style="position: fixed;" hidden>
         <spinner title="Loading...">&#x2B6E;</spinner> Loading...
     </div>
+
+    <div id="nav_spacer" style="height: 122px; display: none;"></div>
+    <navbar style="position: static;" id="navbar">
+        <div style="margin-bottom:7.5px;">
+            <img class="kepler-logo" src="../kepler/kepler_logo.png" alt="Kepler!" onclick="ScrollToTop()">
+        </div>
+        <div>
+            <a href="../kepler">home</a>
+            <!-- <a href="../kepler/docs">about</a> -->
+            <a active>docs</a>
+        </div>
+    </navbar>
+
     <sidebar>
         <list style="margin-bottom: 5em;">
             <section>
@@ -73,6 +139,7 @@
     </sidebar>
 
     <content>
+
         <version>Kepler v1a1.5</version>
         <span id="content-body">
             <h1>Welcome to the Kepler docs!</h1>
@@ -85,6 +152,7 @@
 
         <!-- spacing at the bottom -->
         <div style="height: 50px;"></div>
+        <slabel style="margin-left: 0;">©2022 William H.</slabel>
     </content>
 </body>
 
@@ -92,6 +160,7 @@
     let main_content = document.getElementById("content-body");
 
     const sidebar = document.querySelector('sidebar')
+
     let button = document.getElementsByTagName("toggle")[0]
 
     const HideSidebar = () => {
