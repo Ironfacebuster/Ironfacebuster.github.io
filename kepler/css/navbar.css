@@ -11,8 +11,6 @@ mid_dark {
     padding: 15px 25px;
     padding-bottom: 40px;
 
-    margin-top: 25px;
-    margin-bottom: 25px;
 
     color: white;
     font-family: 'Titillium Web', Arial, Helvetica, sans-serif;
@@ -26,8 +24,8 @@ mid_light {
     background-color: transparent;
     padding: 15px 25px;
 
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: 0px;
+    padding-bottom: 40px;
 
     color: white;
     font-family: 'Titillium Web', Arial, Helvetica, sans-serif;
