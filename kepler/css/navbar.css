@@ -37,11 +37,10 @@ navbar {
     z-index: 100;
     display: block;
 
-    width: calc(100vw - 30px);
     background-color: #0e1013;
 
     padding: 15px 10px;
-    width: calc(100% - 15px);
+    width: calc(100% - 20px);
 
     color: white;
 
