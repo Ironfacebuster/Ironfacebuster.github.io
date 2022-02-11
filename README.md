@@ -5,6 +5,6 @@ Enjoy reading all of my weird CSS and HTML
 
 
 ## Links
-Main site: https://ironfacebuster.tk
+Main site: http://www.ironfacebuster.ml/
 
-Kepler docs: https://ironfacebuster.tk/kepler/docs
+Kepler docs: http://www.ironfacebuster.ml/kepler/docs
