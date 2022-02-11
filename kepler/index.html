@@ -21,22 +21,22 @@
 
     <!-- navbar things -->
     <link rel="stylesheet" href="./css/navbar.css">
-    <script defer>
+    <script>
         function ScrollToTop() {
-            document.body.scrollTo({
+            window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             })
         }
 
         let px_to_int = (px) => {
-            return parseInt(px.replace("px", ""))
+            return parseFloat(px.replace("px", ""))
         }
 
         let get_nav_height = () => {
             let nav_style = getComputedStyle(document.getElementById("navbar"))
 
-            let new_height = [nav_style.height, nav_style.marginTop, nav_style.marginBottom, nav_style
+            let new_height = [nav_style.height, nav_style
                 .paddingTop, nav_style.paddingBottom
             ].map((a) => {
                 return px_to_int(a)
@@ -53,15 +53,7 @@
 
                 let new_height = get_nav_height()
 
-                spacer.style.height = new_height
-
-                let sidebar = document.querySelector('sidebar')
-                sidebar.style.height =
-                    `calc(100% - ${new_height}px)`
-                sidebar.style.marginTop = `${new_height}px`
-
-                let content = document.querySelector('content')
-                content.style.height = `calc(100% - ${new_height}px - 25px)`
+                spacer.style.height = new_height + "px"
             }
             // content.style.marginTop = `${new_height}px`
 
@@ -80,12 +72,39 @@
             screen.orientation.addEventListener("change", calc_heights)
             window.addEventListener("orientationchange", calc_heights)
             window.addEventListener("resize", calc_heights)
+            calc_heights()
         })
     </script>
 
     <style>
         h3 {
             margin-bottom: 5px;
+        }
+
+        ul {
+            padding-left: 0px;
+            text-align: left;
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+            min-width: 400px;
+        }
+
+        li {
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%;
+        }
+
+        li img {
+            width: 100%;
+        }
+
+        @media screen and (max-width:400px) {
+            ul {
+                width: 90%;
+                min-width: 0px;
+            }
         }
     </style>
 
@@ -107,7 +126,51 @@
 
     <mid_light>
         <h2>What is Kepler?</h2>
-        Kepler is a brand new language, designed to be easy-to-use and quick to learn!
+        Kepler is a brand new language, designed to be easy-to-use and <a
+            href="../kepler/docs?target=Introduction">quick to learn</a>
+    </mid_light>
+
+    <mid_dark>
+        <h2>Features</h2>
+        <!-- bullet point list -->
+        <ul>
+            <li>
+                <h3>English-like syntax</h3>
+                <section>
+                    Write code like you're speaking English
+                </section>
+            </li>
+            <li>
+                <h3>Easy-to-import libraries</h3>
+                <section>
+                    Expand Kepler's capabilities with libraries, from <a href="../kepler/docs?target=input">input</a> to
+                    <a href="../kepler/docs?target=objects">objects</a>
+                </section>
+            </li>
+            <li>
+                <h3>Verbose errors and stack traces</h3>
+
+            </li>
+            <li>
+                <h3>Simple data types, with implicit and explicit casting</h3>
+                A list of data types, as well as castability, is available in the <a href="../kepler/docs">docs</a>.
+            </li>
+            <li>
+                <h3>Examples</h3>
+                Example files with varying complexity are included in the installer
+            </li>
+        </ul>
+    </mid_dark>
+
+    <mid_light>
+        <!-- <h2>Sources</h2> -->
+        <div style="height: 36.67px;"></div>
+        <section>
+            Written in C# and built with <a href="https://dotnet.microsoft.com/en-us/">.NET</a>
+        </section>
+        <section>
+            Made with 💖 by <a href="https://github.com/Ironfacebuster">Ironfacebuster</a>
+        </section>
     </mid_light>
 
     <mid_dark>
@@ -127,30 +190,7 @@
         <a href="https://github.com/Ironfacebuster/kepler-interpreter">GitHub repository</a>
     </mid_dark>
 
-    <slabel>©2022 William H.</slabel>
+    <mid_light>
+        <slabel>©2022 William H.</slabel>
+    </mid_light>
 </body>
-<script>
-    let nav = document.getElementById("navbar")
-    let nav_style = getComputedStyle(nav)
-
-    let spacer = document.getElementById("nav_spacer")
-    let new_height = [nav_style.height, nav_style.marginTop, nav_style.marginBottom, nav_style
-        .paddingTop, nav_style.paddingBottom
-    ].map((a) => {
-        return px_to_int(a)
-    }).reduce((a, b) => a + b)
-
-    spacer.style.height = new_height
-
-    window.addEventListener("scroll", () => {
-        // fix navbar to top of screen
-        if (window.scrollY > 0) {
-            nav.style.position = "fixed"
-            nav.style.top = "0px"
-            spacer.style.display = "block"
-        } else {
-            nav.style.position = "static"
-            spacer.style.display = "none"
-        }
-    })
-</script>
