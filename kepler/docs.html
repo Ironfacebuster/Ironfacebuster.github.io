@@ -63,7 +63,10 @@
                 sidebar.style.marginTop = `${new_height}px`
 
                 let content = document.querySelector('content')
-                content.style.height = `calc(100% - ${new_height}px - 16px)`
+
+                if (window.matchMedia("(pointer: coarse").matches) content.style.height =
+                    `calc(100% - ${new_height}px - 1px)`
+                else content.style.height = `calc(100% - ${new_height}px - 16px)`
             }
 
             window.addEventListener("scroll", () => {
