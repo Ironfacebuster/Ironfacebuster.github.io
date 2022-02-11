@@ -79,3 +79,15 @@ body {
     transform: rotate(5deg) scale(1.2);
     transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
+
+@media screen and (max-width: 500px) {
+    .kepler-logo {
+        width: 30px;
+    }
+}
+
+@media screen and (max-width: 240px) {
+    .kepler-logo {
+        display: none;
+    }
+}

@@ -21,17 +21,66 @@
 
     <!-- navbar things -->
     <link rel="stylesheet" href="./css/navbar.css">
-    <script>
+    <script defer>
         function ScrollToTop() {
-            window.scrollTo({
+            document.body.scrollTo({
                 top: 0,
                 behavior: 'smooth'
-            });
+            })
         }
 
         let px_to_int = (px) => {
             return parseInt(px.replace("px", ""))
         }
+
+        let get_nav_height = () => {
+            let nav_style = getComputedStyle(document.getElementById("navbar"))
+
+            let new_height = [nav_style.height, nav_style.marginTop, nav_style.marginBottom, nav_style
+                .paddingTop, nav_style.paddingBottom
+            ].map((a) => {
+                return px_to_int(a)
+            }).reduce((a, b) => a + b)
+
+            return new_height
+        }
+
+        window.addEventListener("load", () => {
+            let nav = document.getElementById("navbar")
+            let spacer = document.getElementById("nav_spacer")
+
+            let calc_heights = () => {
+
+                let new_height = get_nav_height()
+
+                spacer.style.height = new_height
+
+                let sidebar = document.querySelector('sidebar')
+                sidebar.style.height =
+                    `calc(100% - ${new_height}px)`
+                sidebar.style.marginTop = `${new_height}px`
+
+                let content = document.querySelector('content')
+                content.style.height = `calc(100% - ${new_height}px - 25px)`
+            }
+            // content.style.marginTop = `${new_height}px`
+
+            window.addEventListener("scroll", () => {
+                // fix navbar to top of screen
+                if (window.scrollY > 0) {
+                    nav.style.position = "fixed"
+                    nav.style.top = "0px"
+                    spacer.style.display = "block"
+                } else {
+                    nav.style.position = "static"
+                    spacer.style.display = "none"
+                }
+            })
+
+            screen.orientation.addEventListener("change", calc_heights)
+            window.addEventListener("orientationchange", calc_heights)
+            window.addEventListener("resize", calc_heights)
+        })
     </script>
 
     <style>
