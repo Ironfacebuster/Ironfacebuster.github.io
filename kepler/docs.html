@@ -64,9 +64,11 @@
 
                 let content = document.querySelector('content')
 
-                if (window.matchMedia("(pointer: coarse").matches) content.style.height =
-                    `calc(100% - ${new_height}px - 1px)`
-                else content.style.height = `calc(100% - ${new_height}px - 16px)`
+                // check if device is mobile or width is less than 800px
+                if (window.matchMedia("(pointer: coarse").matches || window.innerWidth <= 800)
+                    content.style.height = `calc(100% - ${new_height}px - 1px)`
+                else
+                    content.style.height = `calc(100% - ${new_height}px - 16px)`
             }
 
             window.addEventListener("scroll", () => {
