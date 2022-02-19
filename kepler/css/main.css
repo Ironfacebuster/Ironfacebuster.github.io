@@ -23,6 +23,7 @@ body {
 
 sidebar {
     width: 15em;
+    z-index: 4;
     /* height: 100%; */
     background-color: #0e1013;
     position: fixed;
@@ -42,7 +43,7 @@ sidebar[minimized="true"] {
 }
 
 toggle {
-    z-index: 1;
+    z-index: 5;
     display: block;
     position: fixed;
     border-radius: 5px;
@@ -216,7 +217,12 @@ h1, h2 {
 content {
     margin-bottom: 5em;
     margin-left: 2em;
-    transform: translateX(15.5em);
+
+    /* TODO: figure out why this isn't working */
+    /* --do-translate: calc(1px - max(0px, min(1px, (100vw - 500px) * 1000px))); */
+    /* --translate-distance: calc(var(--do-translate) * 15.5em); */
+    /* transform: translateX(var(--translate-distance)); */
+    /* transform: translateX(calc(clamp(0, (1px - max(0px, min(1px, 1 - (100vw - 500px) * 1000px))), 1) * 15.5em)); */
     transition: transform 0.25s;
 }
 
