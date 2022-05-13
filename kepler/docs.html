@@ -160,7 +160,7 @@
         <span id="content-body">
             <h1>Welcome to the Kepler docs!</h1>
             If you're brand new to Kepler, click the "Introduction" option on the left to get started.<br><br>
-            Click the arrow on the bottom left to open the navigation sidebar.<br><br>
+            Click the bottom left arrow to toggle the navigation sidebar.<br><br>
         </span>
 
         <!-- remove this -->
@@ -173,6 +173,10 @@
 </body>
 
 <script>
+    let scroll_heights = window.localStorage.hasOwnProperty("scroll_heights")
+        ? JSON.parse(window.localStorage.getItem("scroll_heights"))
+        : {}
+
     let main_content = document.getElementById("content-body");
 
     const sidebar = document.querySelector('sidebar')
@@ -180,10 +184,10 @@
     let button = document.getElementsByTagName("toggle")[0]
 
     const HideSidebar = () => {
-            button.setAttribute("minimized", true)
-            sidebar.setAttribute("minimized", true)
-            main_content.parentNode.setAttribute("expanded", true)
-        },
+        button.setAttribute("minimized", true)
+        sidebar.setAttribute("minimized", true)
+        main_content.parentNode.setAttribute("expanded", true)
+    },
         ShowSidebar = () => {
             button.removeAttribute("minimized")
             sidebar.setAttribute("minimized", false)
@@ -207,6 +211,11 @@
         let file = item.getAttribute('load')
 
         if (file == current_page) return
+
+        // set last scroll height
+        scroll_heights[current_page] = document.querySelector('content').scrollTop
+        window.localStorage.setItem("scroll_heights", JSON.stringify(scroll_heights))
+
         document.title = `Loading ${item.innerText} - Kepler Docs`
 
         LoadItem(file).then(() => {
@@ -219,7 +228,8 @@
             if (pushstate)
                 history.pushState({
                     target: file,
-                    title: document.title
+                    title: document.title,
+                    scrollHeight: document.querySelector('content').scrollHeight
                 }, `Kepler - ${item.innerText}`, `?target=${item.innerText}`)
 
         }).catch((err) => {
@@ -232,7 +242,13 @@
         if (event.state.target == null) return
 
         try {
-            LoadItem(event.state.target)
+            LoadItem(event.state.target).then(() => {
+                if (event.state.hasOwnProperty('scrollHeight'))
+                    document.querySelector('content').scrollTo({
+                        top: event.state.scrollHeight,
+                        behavior: 'smooth'
+                    })
+            })
             document.title = event.state.title
         } catch (err) {
             console.log(err)
@@ -276,7 +292,7 @@
             fetch(file.toString()).then(res => {
                 return res.text()
             }).then(html => {
-                SetMainContent(html)
+                SetMainContent(html, file)
                 res()
             }).catch(err => {
                 console.log(err)
@@ -303,12 +319,19 @@
         })
     }
 
-    function SetMainContent(html) {
+    function SetMainContent(html, file) {
         main_content.innerHTML = html
         SetTypeLinks()
         spinner.setAttribute("hidden", true)
 
-        ScrollToTop()
+        // ScrollToTop()
+
+        // instead of scrolling to the top, scroll to the last known position
+        // otherwise, scroll to the top
+        document.querySelector('content').scrollTo({
+            top: scroll_heights.hasOwnProperty(file) ? scroll_heights[file] : 0,
+            behavior: 'smooth'
+        })
     }
 
     function SetTypeLinks() {
