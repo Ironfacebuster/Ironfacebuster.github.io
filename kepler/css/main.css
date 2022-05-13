@@ -210,7 +210,8 @@ spinner[hidden] {
     animation: rotating 2s linear infinite;
 }
 
-h1, h2 {
+h1,
+h2 {
     user-select: none;
 }
 
@@ -234,6 +235,24 @@ content[expanded] {
 li[load] {
     text-decoration: underline;
     cursor: pointer;
+}
+
+/* better visibility for links */
+/* thanks eggs! */
+a {
+    color: rgb(255, 255, 0);
+}
+
+a:hover {
+    color: rgb(193, 193, 35);
+}
+
+a:visited {
+    color: rgb(255, 166, 0);
+}
+
+a:visited:hover {
+    color: rgb(195, 136, 26);
 }
 
 @media screen and (max-width: 800px) {
